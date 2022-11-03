@@ -1,21 +1,44 @@
 const express = require("express")
-const Container = require("./container")
+const { Router } = require("express")
+const Api = require("./api")
 const app = express()
 const PORT = 8080
 
-app.listen(PORT, ()=>console.log(`server listening on port ${PORT}`))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+app.use(express.static("public"));
 
-const productContainer = new Container("productos.txt") 
+app.listen(PORT, () => console.log(`server listening on port ${PORT}`))
+
+const route = Router()
+
+const productosApi = new Api()
 
 //....Endpoints
-app.get("/productos",async(request, response) => {
-    const products = await productContainer.getAll()
-    response.send(products)
+route.get("/", (req, res) => {
+    const productos = productosApi.getAll()
+	res.json({ productos })
 })
 
-app.get("/productoRandom",async(request, response) => {
-    const products = await productContainer.getAll()
-    const randomId = Math.floor(Math.random() * products.length)
-    const product = products[randomId]
-    response.send(product)
+route.post("/", (req, res) => {
+    let producto = req.body
+    productosApi.save(producto)
+	res.json({ msg: 'se agrego el producto' })
 })
+
+route.get("/:id", (req, res) => {
+    let producto = productosApi.getById(req.params.id)
+	res.json({ producto })
+})
+
+route.put("/:id", (req, res) => {
+    let result = productosApi.replaceById(req.params.id, req.body)
+    res.json({result})
+})
+
+route.delete("/:id", (req, res) => {
+    productosApi.deleteById(req.params.id)
+	res.json({ msg: 'id eliminado' })
+})
+
+app.use("/api/productos", route)
