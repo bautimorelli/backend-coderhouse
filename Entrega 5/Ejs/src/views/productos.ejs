@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/nav.ejs") %>
+    <div class="m-4">
+        <p class="h1">Vista de Productos</p>
+        <% if (products.length > 0) { %>
+            <%- include("./partials/productTable.ejs", {products: products}) %> 
+        <% } else { %>
+            <%- include("./partials/emptyAlert.ejs") %> 
+        <% } %> 
+    </div>
+    <%- include("./partials/scripts.ejs") %>
+</body>
+</html>
