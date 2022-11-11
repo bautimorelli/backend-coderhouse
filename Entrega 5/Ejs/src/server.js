@@ -31,5 +31,5 @@ app.post("/productos", (req, res) => {
 
 app.get("/productos", (req, res) => {
 	const productos = productosApi.getAll()
-	res.render('productos', {products: productos})
+	res.render('productos')
 })
