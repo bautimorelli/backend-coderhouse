@@ -1,6 +1,7 @@
 const socketClient = io()
 const productsContainer = document.getElementById("productsContainer")
 const chatContainer = document.getElementById("chatContainer")
+
 document.getElementById("alertContainer").style.display = "block"
 document.getElementById("tableContainer").style.display = "none"
 
