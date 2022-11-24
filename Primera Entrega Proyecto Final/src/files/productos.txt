@@ -8,35 +8,5 @@
     "precio": "2150",
     "stock": "7",
     "id": 1
-  },
-  {
-    "timestamp": "22/11/2022",
-    "nombre": "Calculadora 2",
-    "descripcion": "una caluladora",
-    "codigo": "512345|12",
-    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
-    "precio": "2150",
-    "stock": "7",
-    "id": 2
-  },
-  {
-    "timestamp": "22/11/2022",
-    "nombre": "Calculadora 3",
-    "descripcion": "una caluladora",
-    "codigo": "512345|12",
-    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
-    "precio": "2150",
-    "stock": "7",
-    "id": 3
-  },
-  {
-    "timestamp": "22/11/2022",
-    "nombre": "Calculadora 4",
-    "descripcion": "una caluladora",
-    "codigo": "512345|12",
-    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
-    "precio": "2150",
-    "stock": "7",
-    "id": 4
   }
 ]
