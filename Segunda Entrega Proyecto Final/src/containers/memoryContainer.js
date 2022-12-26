@@ -1,4 +1,4 @@
-class Api {
+class MemoryContainer {
 	constructor() {
 		this.productos = []
 	}
@@ -49,4 +49,4 @@ class Api {
 	}
 }
 
-module.exports = Api
+export { MemoryContainer }

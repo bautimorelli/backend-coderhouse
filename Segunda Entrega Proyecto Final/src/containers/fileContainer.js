@@ -1,9 +1,13 @@
-const fs = require("fs")
-const path = require("path");
+import { fileURLToPath } from "url"
+import fs from "fs"
+import path from "path"
 
-class Container {
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+class FileContainer {
 	constructor(filename) {
-		this.ruta = path.join(__dirname,"..",`files/${filename}`)
+		this.ruta = path.join(__dirname, "..", `files/${filename}`)
 	}
 
 	async readFile() {
@@ -117,11 +121,10 @@ class Container {
 			objects[index] = object
 			await this.writeFile(JSON.stringify(objects, null, 2))
 			return objects
-		}
-		catch (error){
+		} catch (error) {
 			console.log(error)
 		}
 	}
 }
 
-module.exports = Container
+export { FileContainer }
