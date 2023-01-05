@@ -9,9 +9,11 @@ export const options = {
 	firebase: {
 		cartsCollection: "carts",
 		productsCollection: "products",
+		databaseURL: "htpps://coderhousebackend.firebase.io"
 	},
 	mongoDb: {
 		cartModel,
 		productModel,
-	},
+		databaseURL: "mongodb+srv://bautista:7991@backendcoderhouse.kuu8jnn.mongodb.net/ecommerce?retryWrites=true&w=majority"
+	}
 }

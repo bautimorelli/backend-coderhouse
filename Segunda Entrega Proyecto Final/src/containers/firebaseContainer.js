@@ -1,10 +1,4 @@
 import admin from "firebase-admin"
-import serviceAccount from "../db/firebaseKey.json" assert { type: "json" }
-
-admin.initializeApp({
-	credential: admin.credential.cert(serviceAccount),
-	databaseURL: "htpps://coderhousebackend.firebase.io",
-})
 
 const db = admin.firestore()
 
@@ -31,6 +25,7 @@ class FirebaseContainer {
 		try {
 			let doc = this.collection.doc()
 			await doc.create(object)
+			return doc.id
 		} catch (error) {
 			console.log("Error al guardar", error)
 		}

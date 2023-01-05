@@ -1,9 +1,11 @@
 import { options } from "../config/databaseConfig.js"
+import firebaseInit from "../config/firebaseInit.js"
+import initializeMongo from "../config/moongoseInit.js"
 
 let ContainerDaoCarts
 let ContainerDaoProducts
 
-let databaseType = "mongoDb"
+let databaseType = "firebase"
 
 switch (databaseType) {
 	case "archivo":
@@ -25,6 +27,7 @@ switch (databaseType) {
 		break
 
 	case "firebase":
+		firebaseInit()
 		const { FirebaseDAOCarts } = await import("./carts/firebaseDaoCarts.js")
 		const { FirebaseDAOProducts } = await import(
 			"./products/firebaseDaoProducts.js"
@@ -38,17 +41,14 @@ switch (databaseType) {
 		break
 
 	case "mongoDb":
+		initializeMongo()
 		const { MongoDAOCarts } = await import("./carts/mongoDaoCarts.js")
 		const { MongoDAOProducts } = await import(
 			"./products/mongoDaoProducts.js"
 		)
-		ContainerDaoCarts = new MongoDAOCarts(
-			options.mongoDb.cartModel.cartCollecion,
-			options.mongoDb.cartModel.cartSchema
-		)
+		ContainerDaoCarts = new MongoDAOCarts(options.mongoDb.cartModel)
 		ContainerDaoProducts = new MongoDAOProducts(
-			options.mongoDb.productModel.productCollection,
-			options.mongoDb.productModel.productSchema
+			options.mongoDb.productModel
 		)
 		break
 }

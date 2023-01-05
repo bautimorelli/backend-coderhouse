@@ -1,20 +1,6 @@
-import mongoose from "mongoose"
-
-mongoose.connect(
-	"mongodb+srv://bautista:7991@backendcoderhouse.kuu8jnn.mongodb.net/ecommerce?retryWrites=true&w=majority",
-	{
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	},
-	(error) => {
-		if (error) return console.log("hubo un error al conectarse")
-		console.log("conexion exitosa")
-	}
-)
-
 class MongoDbContainer {
-	constructor(name, schema) {
-		this.model = mongoose.model(name, schema)
+	constructor(model) {
+		this.model = model
 	}
 
 	async getAll() {
@@ -29,7 +15,7 @@ class MongoDbContainer {
 	async save(object) {
 		try {
 			const response = await this.model.create(object)
-			return response
+			return response.id
 		} catch (error) {
 			console.log("Error al guardar", error)
 		}

@@ -12,13 +12,13 @@ const cartSchema = new mongoose.Schema(
 	}
 )
 
-cartSchema.set("toJSON", {
-	transform: (_, response) => {
-		response.id = response._id
-		delete response.__v
-		delete response._id
-		return response
-	},
-})
+// cartSchema.set("toJSON", {
+// 	transform: (_, response) => {
+// 		response.id = response._id
+// 		delete response.__v
+// 		delete response._id
+// 		return response
+// 	},
+// })
 
-export const cartModel = { cartCollecion, cartSchema }
+export const cartModel = mongoose.model(cartCollecion, cartSchema)

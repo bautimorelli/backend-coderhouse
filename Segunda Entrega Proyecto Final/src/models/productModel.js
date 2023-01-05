@@ -11,19 +11,16 @@ const productSchema = new mongoose.Schema(
 		price: { type: Number, required: true },
 		stock: { type: Number, required: true, default: 1 },
 		timestamp: { type: String, required: true, max: 100 },
-	},
-	{
-		virtuals: true,
 	}
 )
 
 productSchema.set("toJSON", {
+	virtuals: true,
 	transform: (_, response) => {
 		response.id = response._id
 		delete response.__v
 		delete response._id
-		return response
 	},
 })
 
-export const productModel = { productCollection, productSchema }
+export const productModel = mongoose.model(productCollection, productSchema)

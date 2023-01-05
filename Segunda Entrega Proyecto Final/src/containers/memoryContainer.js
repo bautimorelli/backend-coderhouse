@@ -11,6 +11,7 @@ class MemoryContainer {
 		const id = this.productos.length + 1
 		producto.id = id
 		this.productos.push(producto)
+		return id
 	}
 
 	getById(id) {
