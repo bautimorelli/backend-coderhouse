@@ -80,7 +80,8 @@ io.on("connection", async (socket) => {
 app.use(cookieParser())
 app.use(session({
 	store: MongoStore.create({
-		mongoUrl: options.mongoAtlas.urlDatabase
+		mongoUrl: options.mongoAtlas.urlDatabase,
+		ttl:60,
 	}),
 	secret:"claveSuperHyperUltraMegaSuperSecreta",
 	resave: false,
