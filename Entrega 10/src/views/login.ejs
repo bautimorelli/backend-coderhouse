@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head.ejs") %> 
+<body>
+    <div class="contentContainer m-4">
+        <p class="h1 m-4">Login de Usuario</p>
+        <div class="formContainer">
+            <form action="/login" method="post" class="form m-4" id="productForm">
+                <div class="mb-3">
+                    <label for="inputName" class="form-label">Ingrese su nombre:</label>
+                    <input type="text" name="name" class="form-control" id="inputName">
+                </div>
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </form>
+        </div>
+    </div>
+    <%- include("./partials/scripts.ejs") %>
+</body>
+</html>
